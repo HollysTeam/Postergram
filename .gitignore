@@ -1,3 +1,7 @@
+######################
+#java
+######################
+
 # Compiled class file
 *.class
 
@@ -20,3 +24,89 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+######################
+# react ignore
+######################
+
+.DS_STORE
+node_modules
+*~
+*.pyc
+static
+.grunt
+_SpecRunner.html
+__benchmarks__
+build/
+remote-repo/
+coverage/
+.module-cache
+*.gem
+docs/.bundle
+docs/code
+docs/_site
+docs/.sass-cache
+docs/js/*
+docs/downloads/*.zip
+docs/vendor/bundle
+fixtures/dom/public/react-dom.js
+fixtures/dom/public/react.js
+test/the-files-to-test.generated.js
+*.log*
+chrome-user-data
+*.sublime-project
+*.sublime-workspace
+.idea
+*.iml
+.vscode
+*.swp
+*.swo
+*react*min*.js
+
+######################
+# maven ignore
+######################
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
+
+######################
+# Eclipse
+######################
+  
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.springBeans
+.loadpath
+/src/main/resources/rebel.xml
+# External tool builders
+.externalToolBuilders/
+  
+# Locally stored "Eclipse launch configurations"
+*.launch
+  
+# CDT-specific
+.cproject
+  
+# PDT-specific
+.buildpath

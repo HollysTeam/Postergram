@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+
+<form th:action="@{/api/db/test}" th:method="get">
+<input type="submit" value="get전송"/>
+</form>
+
+<form th:action="@{/api/db/test}" th:method="post">
+<input type="submit" value="post전송"/>
+</form>
+
+<form th:action="@{/api/db/test}" th:method="put">
+<input type="submit" value="put전송"/>
+</form>
+
+<form th:action="@{/api/db/test}" th:method="delete">
+<input type="submit" value="delete전송"/>
+</form>
+
+</body>
+</html>

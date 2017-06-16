@@ -1,6 +1,5 @@
-package hollys.example.config;
+package com.hollys.postergram.config;
 
-import hollys.example.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +10,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.hollys.postergram.repository.Repository;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -24,7 +25,7 @@ public class PostergramJPARepositoryConfig {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.username("root");
 		dataSourceBuilder.password("");
-		dataSourceBuilder.url("jdbc:mysql://localhost/test?autoReconnect=true&useSSL=false");
+		dataSourceBuilder.url("jdbc:mysql://localhost/postergram?autoReconnect=true&useSSL=false");
 		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
 		return dataSourceBuilder.build();
 	}

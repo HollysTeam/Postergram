@@ -1,7 +1,8 @@
-package hollys.example.repository.test;
+package com.hollys.postergram.repository.test;
 
-import hollys.example.entity.test.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.hollys.postergram.entity.test.Test;
 
 public interface TestRepository extends JpaRepository<Test, Long> {
 }

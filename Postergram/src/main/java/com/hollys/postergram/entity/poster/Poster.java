@@ -1,6 +1,6 @@
 package com.hollys.postergram.entity.poster;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,10 +32,10 @@ public class Poster {
 	private String content;
 	
 	@Column(name = "createdAt",nullable=false)
-	private Timestamp createdAt;
+	private LocalDateTime createdAt;
 	
 	@Column(name = "modifiedAt",nullable=false)
-	private Timestamp modifiedAt;
+	private LocalDateTime modifiedAt;
 
 	@Column(name = "deleted",nullable=false)
 	@Size(min = 1, max = 1)

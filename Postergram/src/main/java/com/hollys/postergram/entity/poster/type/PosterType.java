@@ -1,6 +1,7 @@
-package com.hollys.postergram.entity.poster;
+package com.hollys.postergram.entity.poster.type;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,16 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.hollys.postergram.entity.poster.type.PosterTypeRel;
-import com.hollys.postergram.entity.user.User;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,42 +27,34 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @Entity
-@Table(name = "poster")
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name="poster_type")
+@AllArgsConstructor(access=AccessLevel.PRIVATE)
+@NoArgsConstructor(access=AccessLevel.PRIVATE)
 @EntityListeners(value = { AuditingEntityListener.class })
-public class Poster {
+public class PosterType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
-
+	
+	@Column(name="type_name")
+	private String typeName;
+	
 	@OneToMany
-	@JoinColumn(name="poster_id")
+	@JoinColumn(name="type_id")
 	private List<PosterTypeRel> posterTypeRel;
-
-	private String content;
-
+	
 	@CreatedDate
 	private LocalDateTime createdAt;
-
+	
 	@LastModifiedDate
 	private LocalDateTime modifiedAt;
-
-	@Column(columnDefinition = "TINYINT", length = 1)
-	private Boolean deleted;
 	
-	public static Poster create(User user, String content, boolean deleted) {
-		Poster newPoster = new Poster();
-
-		newPoster.user = user;
-		newPoster.content = content;
-		newPoster.deleted = deleted;
-
-		return newPoster;
+	public static PosterType create(String typeName){
+		PosterType newPosterType = new PosterType();
+		
+		newPosterType.typeName = typeName;
+		
+		return newPosterType;
 	}
-
+	
 }

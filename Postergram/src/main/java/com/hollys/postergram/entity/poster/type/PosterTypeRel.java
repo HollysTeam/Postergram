@@ -1,25 +1,25 @@
-package com.hollys.postergram.entity.poster;
+package com.hollys.postergram.entity.poster.type;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.hollys.postergram.entity.poster.type.PosterTypeRel;
-import com.hollys.postergram.entity.user.User;
+import com.hollys.postergram.entity.poster.Poster;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,42 +30,40 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @Entity
-@Table(name = "poster")
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name="poster_type_rel")
+@AllArgsConstructor(access=AccessLevel.PRIVATE)
+@NoArgsConstructor(access=AccessLevel.PRIVATE)
 @EntityListeners(value = { AuditingEntityListener.class })
-public class Poster {
+public class PosterTypeRel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
-
-	@OneToMany
+	
+	@OneToOne
 	@JoinColumn(name="poster_id")
-	private List<PosterTypeRel> posterTypeRel;
-
-	private String content;
-
+	private Poster poster;
+	
+	@OneToOne
+	@JoinColumn(name="type_id")
+	private PosterType posterType;
+	
 	@CreatedDate
 	private LocalDateTime createdAt;
-
+	
 	@LastModifiedDate
 	private LocalDateTime modifiedAt;
-
+	
 	@Column(columnDefinition = "TINYINT", length = 1)
 	private Boolean deleted;
 	
-	public static Poster create(User user, String content, boolean deleted) {
-		Poster newPoster = new Poster();
-
-		newPoster.user = user;
-		newPoster.content = content;
-		newPoster.deleted = deleted;
-
-		return newPoster;
+	public static PosterTypeRel create(Poster poster, PosterType posterType, boolean deleted){
+		PosterTypeRel newPosterTypeRel = new PosterTypeRel();
+		
+		newPosterTypeRel.poster = poster;
+		newPosterTypeRel.posterType = posterType;
+		newPosterTypeRel.deleted = deleted;
+		
+		return newPosterTypeRel;
 	}
-
+	
 }

@@ -24,7 +24,7 @@ public class PostergramJPARepositoryConfig {
 	public DataSource dataSource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.username("root");
-		dataSourceBuilder.password("");
+		dataSourceBuilder.password("root");
 		dataSourceBuilder.url("jdbc:mysql://localhost/postergramdb?autoReconnect=true&useSSL=false");
 		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
 		return dataSourceBuilder.build();

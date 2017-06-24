@@ -1,54 +1,51 @@
 package com.hollys.postergram.entity.poster;
 
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import lombok.Getter;
-
 @Getter
+@Builder
 @Entity
 @Table(name = "poster")
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@EntityListeners(value = { AuditingEntityListener.class })
 public class Poster {
+
 	@Id
-	@Column(name = "id",nullable=false)
-	@Size(max = 11)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name = "user_id",nullable=false)
-	@Size(max = 11)
+
+	@Column(name = "user_id")
 	private int userId;
-	
-	@Column(name = "type_id",nullable=false)
-	@Size(max = 11)
+
+	@Column(name = "type_id")
 	private int typeId;
 
-	@Column(name = "content",nullable=false)
-	@Size(max = 500)
 	private String content;
-	
-	@Column(name = "createdAt",nullable=false)
+
+	@CreatedDate
 	private LocalDateTime createdAt;
-	
-	@Column(name = "modifiedAt",nullable=false)
+
+	@LastModifiedDate
 	private LocalDateTime modifiedAt;
 
-	@Column(name = "deleted",nullable=false)
-	@Size(min = 1, max = 1)
-	private int deleted;
-	
-	public static Poster create(int userId, int typeId, String content, boolean deleted){
+	@Column(columnDefinition = "TINYINT", length = 1)
+	private Boolean deleted;
+
+	public static Poster create(int userId, int typeId, String content, boolean deleted) {
 		Poster newPoster = new Poster();
-		
+
 		newPoster.userId = userId;
 		newPoster.typeId = typeId;
 		newPoster.content = content;
-		newPoster.deleted = 0;
-	
+		newPoster.deleted = deleted;
+
 		return newPoster;
 	}
 

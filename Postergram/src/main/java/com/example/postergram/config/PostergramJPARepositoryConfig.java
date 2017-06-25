@@ -1,6 +1,6 @@
-package com.hollys.postergram.config;
+package com.example.postergram.config;
 
-import com.hollys.postergram.repository.Repository;
+import com.example.postergram.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +24,8 @@ public class PostergramJPARepositoryConfig {
 	public DataSource dataSource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.username("root");
-		dataSourceBuilder.password("root");
-		dataSourceBuilder.url("jdbc:mysql://localhost/postergramdb?autoReconnect=true&useSSL=false");
+		dataSourceBuilder.password("");
+		dataSourceBuilder.url("jdbc:mysql://localhost/postergramdb?autoReconnect=true&useSSL=false&charset=utf-8");
 		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
 		return dataSourceBuilder.build();
 	}

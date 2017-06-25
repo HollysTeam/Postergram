@@ -1,25 +1,12 @@
-package com.hollys.postergram.entity.poster.type;
+package com.example.postergram.entity.poster;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.hollys.postergram.entity.poster.Poster;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -39,11 +26,11 @@ public class PosterTypeRel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="poster_id")
 	private Poster poster;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="type_id")
 	private PosterType posterType;
 	

@@ -1,4 +1,4 @@
-package com.hollys.postergram.entity.test;
+package com.example.postergram.entity.test;
 
 import lombok.Getter;
 

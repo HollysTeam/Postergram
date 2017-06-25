@@ -1,4 +1,4 @@
-package com.hollys.postergram.entity.poster;
+package com.example.postergram.entity.poster;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +18,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.hollys.postergram.entity.poster.type.PosterTypeRel;
-import com.hollys.postergram.entity.user.User;
+import com.example.postergram.entity.user.User;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -44,9 +42,8 @@ public class Poster {
 	@JoinColumn(name="user_id")
 	private User user;
 
-	@OneToMany
-	@JoinColumn(name="poster_id")
-	private List<PosterTypeRel> posterTypeRel;
+	@OneToMany(mappedBy = "poster")
+	private List<PosterTypeRel> posterTypeRels;
 
 	private String content;
 

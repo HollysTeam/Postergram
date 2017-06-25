@@ -1,4 +1,4 @@
-package com.hollys.postergram.entity.converter;
+package com.example.postergram.entity.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

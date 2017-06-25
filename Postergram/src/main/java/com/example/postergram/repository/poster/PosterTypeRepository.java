@@ -1,8 +1,8 @@
-package com.hollys.postergram.repository.poster.type;
+package com.example.postergram.repository.poster;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hollys.postergram.entity.poster.type.PosterType;
+import com.example.postergram.entity.poster.PosterType;
 
 public interface PosterTypeRepository extends JpaRepository<PosterType, Integer>{
 

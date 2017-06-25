@@ -1,14 +1,12 @@
-package com.hollys.postergram.entity.user;
+package com.example.postergram.entity.user;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.example.postergram.entity.poster.Poster;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -32,7 +30,10 @@ public class User {
 	private String email;
 
 	private String name;
-	
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Poster> posters = new ArrayList<>();
+
 	@CreatedDate
 	private LocalDateTime createdAt;
 	

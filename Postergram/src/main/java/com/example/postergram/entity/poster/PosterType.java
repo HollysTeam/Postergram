@@ -1,17 +1,14 @@
-package com.hollys.postergram.entity.poster.type;
+package com.example.postergram.entity.poster;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,9 +37,8 @@ public class PosterType {
 	@Column(name="type_name")
 	private String typeName;
 	
-	@OneToMany
-	@JoinColumn(name="type_id")
-	private List<PosterTypeRel> posterTypeRel;
+	@OneToMany(mappedBy = "posterType")
+	private List<PosterTypeRel> posterTypeRels;
 	
 	@CreatedDate
 	private LocalDateTime createdAt;

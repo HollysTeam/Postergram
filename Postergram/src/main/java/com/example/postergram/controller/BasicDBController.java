@@ -1,12 +1,11 @@
-package com.hollys.postergram.controller;
+package com.example.postergram.controller;
 
+import com.example.postergram.entity.test.Test;
+import com.example.postergram.repository.test.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.hollys.postergram.entity.test.Test;
-import com.hollys.postergram.repository.test.TestRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;

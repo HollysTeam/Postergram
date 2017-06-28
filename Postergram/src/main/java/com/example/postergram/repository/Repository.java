@@ -1,4 +1,4 @@
-package hollys.example.repository;
+package com.example.postergram.repository;
 
 /**
  * Created by inho on 2017. 6. 10..

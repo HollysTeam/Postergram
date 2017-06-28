@@ -1,4 +1,4 @@
-package hollys.example;
+package com.hollys.postergram;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

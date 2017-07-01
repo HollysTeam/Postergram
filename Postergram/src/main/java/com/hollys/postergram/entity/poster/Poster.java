@@ -45,6 +45,9 @@ public class Poster {
 	private User user;
 
 	@OneToMany(mappedBy = "poster", cascade = CascadeType.ALL)
+	private List<PosterLike> posterLikes;
+	
+	@OneToMany(mappedBy = "poster", cascade = CascadeType.ALL)
 	private List<PosterImage> posterImages;
 	
 	@OneToMany(mappedBy = "poster", cascade = CascadeType.ALL)
